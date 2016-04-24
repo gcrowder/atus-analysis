@@ -32,14 +32,14 @@ def read_in_data():
 #                                               third_code))
 #     return six_digit_list
 
-def get_minutes_child_care(grouped):
-    minutes_caring = {}
+def get_minutes_subject(grouped, subject):
+    minutes_dict = {}
+    length = len(subject[0])
     for name, group in grouped:
         for row in group.itertuples():
-            if row.codes[:2] in ['31', '32', '33']:
-                if name in minutes_caring:
-                    minutes_caring[name] = minutes_caring[name] + row.TUACTDUR24
+            if row.codes[:length] in subject:
+                if name in minutes_dict:
+                    minutes_dict[name] = minutes_dict[name] + row.TUACTDUR24
                 else:
-                    minutes_caring[name] = row.TUACTDUR24
-    child_care_time = pd.Series(minutes_caring)
-    return child_care_time
+                    minutes_dict[name] = row.TUACTDUR24
+    return minutes_dict
