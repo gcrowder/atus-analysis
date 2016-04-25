@@ -2,6 +2,7 @@ import pandas as pd
 
 
 def read_in_data():
+    """ Read in three 2014 ATUS data files to DataFrames. """
     activity = pd.read_csv('data/atusact_2014.dat')
     respondent = pd.read_csv('data/atusresp_2014.dat')
     roster = pd.read_csv('data/atusrost_2014.dat')
@@ -9,6 +10,7 @@ def read_in_data():
 
 
 def get_codes(activity):
+    """ Transform three Series from the Activity file into activity code. """
     codes_list = []
     for row in activity.itertuples():
         if row.TUTIER1CODE < 10:
@@ -28,6 +30,7 @@ def get_codes(activity):
 
 
 def get_minutes_subject(grouped, subject):
+    """Sum up the minutes of a given activity if it's in a given subject."""
     minutes_dict = {}
     length = len(subject[0])
     for name, group in grouped:
