@@ -41,3 +41,10 @@ def get_minutes_subject(grouped, subject):
                 else:
                     minutes_dict[name] = row.TUACTDUR24
     return minutes_dict
+
+
+def main():
+    print('What are you running a library for???')
+
+if __name__ == '__main__':
+    main()
