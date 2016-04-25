@@ -11,3 +11,4 @@ This is the short python module built to help avoid unnecessary repetition in AT
 Only look here if you like ugly code. Provided to show context.
 
 ## data
+This directory contains the data necessary for the analysis found in the presentation notebook.
