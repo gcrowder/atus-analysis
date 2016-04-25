@@ -1,36 +1,31 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
 def read_in_data():
     activity = pd.read_csv('data/atusact_2014.dat')
     respondent = pd.read_csv('data/atusresp_2014.dat')
     roster = pd.read_csv('data/atusrost_2014.dat')
-    who = pd.read_csv('data/atuswho_2014.dat')
-    cps = pd.read_csv('data/atuscps_2014.dat')
-    elder_care = pd.read_csv('data/atusrostec_2014.dat')
-    activity_sum = pd.read_csv('data/atussum_2014.dat')
-    return activity, respondent, roster, who, cps, elder_care, activity_sum
+    return activity, respondent, roster
 
 
-# def get_six_digit_codes(df):
-#     six_digit_list = []
-#     for row in df.itertuples():
-#         if row.TUTIER1 < 10:
-#             first_code = '0{}'.format(row.TUTIER1)
-#         else:
-#             first_code = TUTIER2
-#         if row.TUTIER2 < 10:
-#             second_code = '0{}'.format(row.TUTIER2)
-#         else:
-#             second_code = TUTIER2
-#         if row.TUTIER3 < 10:
-#             third_code = '0{}'.format(row.TUTIER3)
-#         else:
-#             third_code = TUTIER3
-#         six_digit_list.append('{}{}{}'.format(first_code, second_code,
-#                                               third_code))
-#     return six_digit_list
+def get_codes(activity):
+    codes_list = []
+    for row in activity.itertuples():
+        if row.TUTIER1CODE < 10:
+            first = '0{}'.format(row.TUTIER1CODE)
+        else:
+            first = row.TUTIER1CODE
+        if row.TUTIER2CODE < 10:
+            second = '0{}'.format(row.TUTIER2CODE)
+        else:
+            second = row.TUTIER2CODE
+        if row.TUTIER3CODE < 10:
+            third = '0{}'.format(row.TUTIER3CODE)
+        else:
+            third = row.TUTIER3CODE
+        codes_list.append('{}{}{}'.format(first, second, third))
+    return codes_list
+
 
 def get_minutes_subject(grouped, subject):
     minutes_dict = {}
